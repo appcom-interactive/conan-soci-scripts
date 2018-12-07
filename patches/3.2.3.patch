@@ -1,0 +1,12 @@
+diff -u -r soci-3.2.3.orig/src/backends/mysql/session.cpp soci-3.2.3/src/backends/mysql/session.cpp
+--- soci-3.2.3.orig/src/backends/mysql/session.cpp	2015-04-09 00:39:00.000000000 +0200
++++ soci-3.2.3/src/backends/mysql/session.cpp	2018-07-13 08:38:15.000000000 +0200
+@@ -199,7 +199,7 @@
+                 throw soci_error(err);
+             }
+             *port = std::atoi(val.c_str());
+-            if (port < 0)
++            if (*port < 0)
+             {
+                 throw soci_error(err);
+             }

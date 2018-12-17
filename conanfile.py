@@ -66,13 +66,13 @@ include(${CMAKE_BINARY_DIR}/conan_paths.cmake) """)
         self.requires("mysql-c-client/6.1.9@%s/%s" % (self.user, self.channel))
         self.requires("sqlite/3.26.0@%s/%s" % (self.user, self.channel))
 
-#    def package(self):
+    def package(self):
 #        self.copy("*", dst="include", src='include')
-#        self.copy("*.lib", dst="lib", src='lib', keep_path=False)
-#        self.copy("*.dll", dst="bin", src='bin', keep_path=False)
-#        self.copy("*.so", dst="lib", src='lib', keep_path=False)
-#        self.copy("*.dylib", dst="lib", src='lib', keep_path=False)
-#        self.copy("*.a", dst="lib", src='lib', keep_path=False)
+        self.copy("*.lib", dst="lib", src='lib', keep_path=False)
+        self.copy("*.dll", dst="bin", src='bin', keep_path=False)
+        self.copy("*.so", dst="lib", src='lib', keep_path=False)
+        self.copy("*.dylib", dst="lib", src='lib', keep_path=False)
+        self.copy("*.a", dst="lib", src='lib', keep_path=False)
         
     def package_info(self):
         self.cpp_info.libs = tools.collect_libs(self)

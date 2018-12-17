@@ -11,7 +11,7 @@ This repository is licensed under the [MIT License](LICENSE).
 
 To create a package for macOS you can run the conan command like this:
 
-`conan create . SOCI/3.2.3@rgpaul/stable -s os=Macos -s os.version=10.14 -s arch=x86_64 -s build_type=Release -o shared=False`
+`conan create . soci/3.2.3@rgpaul/stable -s os=Macos -s os.version=10.14 -s arch=x86_64 -s build_type=Release -o shared=False`
 
 ### Requirements
 

@@ -2,7 +2,7 @@ from conans import ConanFile, CMake, tools
 import os
 
 class SociConan(ConanFile):
-    name = "SOCI"
+    name = "soci"
     version = "3.2.3"
     author = "Ralph-Gordon Paul (gordon@rgpaul.com)"
     settings = "os", "compiler", "build_type", "arch"
@@ -13,7 +13,7 @@ class SociConan(ConanFile):
     license = "BSL-1.0"
     exports_sources = "patches/*"
 
-    # download zlib sources
+    # download sources
     def source(self):
         url = "https://github.com/SOCI/soci/archive/%s.tar.gz" % self.version
         tools.get(url)
@@ -55,9 +55,9 @@ class SociConan(ConanFile):
         cmake.install()
 
     def requirements(self):
-        self.requires("Boost/1.68.0@%s/%s" % (self.user, self.channel))
-        self.requires("MySQLClient/6.1.9@%s/%s" % (self.user, self.channel))
-        self.requires("SQLite/3.24.0@%s/%s" % (self.user, self.channel))
+        self.requires("boost/1.68.0@%s/%s" % (self.user, self.channel))
+        self.requires("mysql-c-client/6.1.9@%s/%s" % (self.user, self.channel))
+        self.requires("sqlite/3.24.0@%s/%s" % (self.user, self.channel))
 
 #    def package(self):
 #        self.copy("*", dst="include", src='include')

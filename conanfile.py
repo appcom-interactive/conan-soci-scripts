@@ -55,9 +55,9 @@ class SociConan(ConanFile):
         cmake.install()
 
     def requirements(self):
-        self.requires("boost/1.68.0@%s/%s" % (self.user, self.channel))
+        self.requires("boost/1.69.0@%s/%s" % (self.user, self.channel))
         self.requires("mysql-c-client/6.1.9@%s/%s" % (self.user, self.channel))
-        self.requires("sqlite/3.24.0@%s/%s" % (self.user, self.channel))
+        self.requires("sqlite/3.26.0@%s/%s" % (self.user, self.channel))
 
 #    def package(self):
 #        self.copy("*", dst="include", src='include')

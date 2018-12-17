@@ -6,12 +6,14 @@ class SociConan(ConanFile):
     version = "3.2.3"
     author = "Ralph-Gordon Paul (gordon@rgpaul.com)"
     settings = "os", "compiler", "build_type", "arch"
-    options = {"shared": [True, False], "android_ndk": "ANY", "android_stl_type":["c++_static", "c++_shared"]}
-    default_options = "shared=False", "android_ndk=None", "android_stl_type=c++_static"
+    options = {"shared": [True, False], "android_ndk": "ANY", "android_stl_type":["c++_static", "c++_shared"], 
+    "mysql": [True, False], "sqlite": [True, False], "obdc": [True, False], "oracle": [True, False], "postgre": [True, False], "firebird": [True, False], "db2": [True, False]}
+    default_options = "shared=False", "android_ndk=None", "android_stl_type=c++_static", "mysql=False", "sqlite=False", "obdc=False", "oracle=False", "postgre=False", "firebird=False", "db2=False"
     description = "The C++ Database Access Library"
     url = "https://github.com/Manromen/conan-soci-scripts"
     license = "BSL-1.0"
     exports_sources = "patches/*"
+    generators = "cmake_paths"
 
     # download sources
     def source(self):
@@ -20,6 +22,11 @@ class SociConan(ConanFile):
 
         if self.version == "3.2.3":
             tools.patch(patch_file="patches/3.2.3.patch")
+
+        tools.replace_in_file("%s/soci-%s/src/CMakeLists.txt" % (self.source_folder, self.version),
+            "project(SOCI)",
+            """project(SOCI)
+include(${CMAKE_BINARY_DIR}/conan_paths.cmake) """)
         
     # compile using cmake
     def build(self):

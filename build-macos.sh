@@ -38,7 +38,8 @@ function createConanPackage()
     local build_type=$2
 
     conan create . soci/${LIBRARY_VERSION}@${CONAN_USER}/${CONAN_CHANNEL} -s os=Macos \
-        -s os.version=${MACOS_SDK_VERSION} -s arch=${arch} -s build_type=${build_type} -o shared=False
+        -s os.version=${MACOS_SDK_VERSION} -s arch=${arch} -s build_type=${build_type} -o shared=False \
+        -o mysql=True -o sqlite=True
 }
 
 #=======================================================================================================================

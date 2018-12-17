@@ -63,8 +63,21 @@ include(${CMAKE_BINARY_DIR}/conan_paths.cmake) """)
 
     def requirements(self):
         self.requires("boost/1.69.0@%s/%s" % (self.user, self.channel))
-        self.requires("mysql-c-client/6.1.9@%s/%s" % (self.user, self.channel))
-        self.requires("sqlite/3.26.0@%s/%s" % (self.user, self.channel))
+        
+        if self.options.mysql:
+            self.requires("mysql-c-client/6.1.9@%s/%s" % (self.user, self.channel))
+        if self.options.sqlite:
+            self.requires("sqlite/3.26.0@%s/%s" % (self.user, self.channel))
+        if self.options.obdc:
+            raise Exception("OBDC is not supported yet")
+        if self.options.oracle:
+            raise Exception("Oracle is not supported yet")
+        if self.options.postgre:
+            raise Exception("PostgreSQL is not supported yet")
+        if self.options.firebird:
+            raise Exception("Firebird is not supported yet")
+        if self.options.db2:
+            raise Exception("DB2 is not supported yet")
 
     def package(self):
 #        self.copy("*", dst="include", src='include')

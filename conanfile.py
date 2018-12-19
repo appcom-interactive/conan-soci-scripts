@@ -61,6 +61,11 @@ include(${CMAKE_BINARY_DIR}/conan_paths.cmake) """)
         cmake.build()
         cmake.install()
 
+        if self.version == "3.2.3":
+             tools.replace_in_file("%s/include/soci/mysql/soci-mysql.h" % (self.package_folder),
+            '#include "soci-backend.h"',
+            '#include "../soci-backend.h"')
+
     def requirements(self):
         self.requires("boost/1.69.0@%s/%s" % (self.user, self.channel))
         

@@ -4,13 +4,13 @@ import os
 class SociConan(ConanFile):
     name = "soci"
     version = "3.2.3"
-    author = "Ralph-Gordon Paul (gordon@rgpaul.com)"
+    author = "Ralph-Gordon Paul (g.paul@appcom-interactive.de)"
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False], "android_ndk": "ANY", "android_stl_type":["c++_static", "c++_shared"], 
     "mysql": [True, False], "sqlite": [True, False], "obdc": [True, False], "oracle": [True, False], "postgre": [True, False], "firebird": [True, False], "db2": [True, False]}
     default_options = "shared=False", "android_ndk=None", "android_stl_type=c++_static", "mysql=False", "sqlite=False", "obdc=False", "oracle=False", "postgre=False", "firebird=False", "db2=False"
     description = "The C++ Database Access Library"
-    url = "https://github.com/Manromen/conan-soci-scripts"
+    url = "https://github.com/appcom-interactive/conan-soci-scripts"
     license = "BSL-1.0"
     exports_sources = "patches/*"
     generators = "cmake_paths"

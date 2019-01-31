@@ -12,7 +12,7 @@ class SociConan(ConanFile):
     description = "The C++ Database Access Library"
     url = "https://github.com/appcom-interactive/conan-soci-scripts"
     license = "BSL-1.0"
-    exports_sources = "patches/*"
+    exports_sources = "patches/*", "cmake-modules/*"
     generators = "cmake_paths"
 
     # download sources
@@ -61,8 +61,9 @@ include(${CMAKE_BINARY_DIR}/conan_paths.cmake) """)
         cmake.build()
         cmake.install()
 
-        if self.version == "3.2.3":
-             tools.replace_in_file("%s/include/soci/mysql/soci-mysql.h" % (self.package_folder),
+        socimysqlheader = "%s/include/soci/mysql/soci-mysql.h"
+        if self.version == "3.2.3" and os.path.isfile(socimysqlheader):
+             tools.replace_in_file(socimysqlheader % (self.package_folder),
             '#include "soci-backend.h"',
             '#include "../soci-backend.h"')
 
